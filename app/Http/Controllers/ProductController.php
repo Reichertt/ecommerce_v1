@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categoria;
-use App\Models\Produto;
+use App\Models\Category;
+use App\Models\Product;
 
-class ProdutoController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request){
         $data = [];
 
-        $listaProdutos = Produto::all();
+        $listaProdutos = Product::all();
         $data['lista'] = $listaProdutos;
 
         return view("home", $data);
@@ -23,10 +23,10 @@ class ProdutoController extends Controller
     $data = [];
 
     // SELECT * FROM categorias
-    $listaCategorias = Categoria::all();
+    $listaCategorias = Category::all();
 
     // SELECT * FROM produtos WHERE categoria_id = $idcategoria
-    $listaProdutos = Produto::limit(8)->get();
+    $listaProdutos = Product::limit(8)->get();
 
     $data["lista"] = $listaProdutos;
     $data["listaCategoria"] = $listaCategorias;
@@ -40,10 +40,10 @@ public function categoriaProduto($idcategoria, Request $request)
     $data = [];
 
     // SELECT * FROM categorias
-    $listaCategorias = Categoria::all();
+    $listaCategorias = Category::all();
 
     // SELECT * FROM produtos WHERE categoria_id = $idcategoria
-    $listaProdutos = Produto::where("categoria_id", $idcategoria)->get();
+    $listaProdutos = Product::where("category_id", $idcategoria)->get();
 
     $data["lista"] = $listaProdutos;
     $data["idcategoria"] = $idcategoria;
@@ -53,7 +53,7 @@ public function categoriaProduto($idcategoria, Request $request)
 }
 
 public function adicionarCarrinho($idProduto = 0 ,Request $request) {
-    $prod = Produto::find($idProduto);
+    $prod = Product::find($idProduto);
 
     if ($prod) {
         // Encontrou o produto

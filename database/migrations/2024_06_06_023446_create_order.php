@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->increments("id");
-            $table->datetime("datapedido");
+            $table->datetime("dateOrder");
             $table->string("status", 4);
             $table->integer("users_id")->unsigned();
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('order');
     }
 };

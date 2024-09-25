@@ -11,24 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('itens_pedidos', function (Blueprint $table) {
+        Schema::create('itens_order', function (Blueprint $table) {
             $table->increments("id");
-            $table->integer("quantidade");
-            $table->decimal("valor", 10,2);
+            $table->integer("amount");
+            $table->decimal("value", 10,2);
             $table->datetime("dt_item");
             
-            $table->integer("produto_id")->unsigned();
-            $table->integer("pedido_id")->unsigned();
+            $table->integer("product_id")->unsigned();
+            $table->integer("order_id")->unsigned();
 
             $table->timestamps();
 
-            $table->foreign("produto_id")
+            $table->foreign("product_id")
                 ->references("id")
-                ->on("produtos")->onDelete("cascade");
+                ->on("product")->onDelete("cascade");
 
-                $table->foreign("pedido_id")
+                $table->foreign("order_id")
                 ->references("id")
-                ->on("pedidos")->onDelete("cascade");
+                ->on("order")->onDelete("cascade");
         });
     }
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('itens_pedidos');
+        Schema::dropIfExists('itens_order');
     }
 };

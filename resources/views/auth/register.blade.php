@@ -44,7 +44,7 @@
                 {{ __('Voltar para o login') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-4 bg-black">
                 {{ __('Cadastrar') }}
             </x-primary-button>
         </div>

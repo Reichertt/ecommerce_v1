@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enderecos', function (Blueprint $table) {
+        Schema::create('address', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("endereco");
-            $table->string("numero");
-            $table->string("cidade");
-            $table->string("estado");
+            $table->string("address");
+            $table->string("number");
+            $table->string("city");
+            $table->string("state");
             $table->string("cep");
-            $table->string("complemento")->nullable();
+            $table->string("complement")->nullable();
             $table->integer("users_id")->unsigned();
 
             $table->timestamps();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enderecos');
+        Schema::dropIfExists('address');
     }
 };
